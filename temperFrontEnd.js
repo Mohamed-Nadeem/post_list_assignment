@@ -12,14 +12,15 @@ class TemperForntEnd extends React.Component {
           {'id': 3, 'title': 'Post 3', 'bgColor': '#e06666'},
           {'id': 4, 'title': 'Post 4', 'bgColor' : '#b6d7a7'}
         ],
-      }]
+      }],
+      stepNumber: 0
     };
   }
 
   handleMove = (id, direction) => {
     const UP = -1;
     const DOWN = 1;
-    const history = this.state.history;
+    const history = this.state.history.slice(0, this.state.stepNumber + 1);
     const current = history[history.length - 1];
     const items = current.items.slice();
 
@@ -36,13 +37,20 @@ class TemperForntEnd extends React.Component {
 
     this.setState({history: history.concat([{
         items: newItems,
-      }])
-    })
+      }]),
+      stepNumber: history.length,
+    });
+  }
+
+  jumpTo = (step) => {
+    this.setState({
+      stepNumber: step
+    });
   }
 
   render() {
     const history = this.state.history;
-    const current = history[history.length - 1];
+    const current = history[this.state.stepNumber];
 
      const moves = history.map((step, move) => {
       const desc = move ?

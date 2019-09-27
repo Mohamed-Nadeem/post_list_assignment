@@ -12,10 +12,24 @@ class TemperForntEnd extends React.Component {
           {'id': 3, 'title': 'Post 3', 'bgColor': '#e06666'},
           {'id': 4, 'title': 'Post 4', 'bgColor' : '#b6d7a7'}
         ],
+        posts = null
       }],
-      stepNumber: 0
+      stepNumber: 0,
+      isLoading: true,
     };
   }
+
+  fetchUsers() {
+  fetch(`https://jsonplaceholder.typicode.com/users`)
+    .then(response => response.json())
+    .then(data =>
+      this.setState({
+        history:{ posts: data },
+        isLoading: false,
+      })
+    )
+    .catch(error => this.setState({ error, isLoading: false }));
+}
 
   handleMove = (id, direction) => {
     const UP = -1;

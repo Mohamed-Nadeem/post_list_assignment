@@ -54,10 +54,10 @@ class TemperForntEnd extends React.Component {
         </li>
       );
     });
-    
+
     return (
       <div>
-        <PostListWrapper items={current.items} onClick={() => this.handleMove(id, direction)}/>
+        <PostListWrapper items={current.items} onClick={(id, direction) => this.handleMove(id, direction)}/>
       </div>
     );
   }

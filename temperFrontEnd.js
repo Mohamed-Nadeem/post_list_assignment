@@ -49,7 +49,7 @@ class TemperForntEnd extends React.Component {
         'Go to move #' + move :
         'Go to game start';
       return (
-        <li>
+        <li key={move}>
           <button onClick={() => this.jumpTo(move)}>{desc}</button>
         </li>
       );
@@ -57,7 +57,12 @@ class TemperForntEnd extends React.Component {
 
     return (
       <div>
-        <PostListWrapper items={current.items} onClick={(id, direction) => this.handleMove(id, direction)}/>
+        <div>
+          <PostListWrapper items={current.items} onClick={(id, direction) => this.handleMove(id, direction)}/>
+        </div>
+        <div>
+           <ol>{moves}</ol>
+        </div>
       </div>
     );
   }

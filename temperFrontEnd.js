@@ -12,7 +12,7 @@ class TemperForntEnd extends React.Component {
           {'id': 3, 'title': 'Post 3', 'bgColor': '#e06666'},
           {'id': 4, 'title': 'Post 4', 'bgColor' : '#b6d7a7'}
         ],
-        posts = null
+        posts = []
       }],
       stepNumber: 0,
       isLoading: true,
